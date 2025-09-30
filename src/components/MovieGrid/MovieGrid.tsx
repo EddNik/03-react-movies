@@ -7,22 +7,24 @@ interface MovieGridProps {
   movies: Movie[];
 }
 
+export const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
+
 export default function MovieGrid({ movies, onSelect }: MovieGridProps) {
   return (
     <>
       {movies.length > 0 && (
         <ul className={css.grid}>
           {/* Набір елементів списку з фільмами */}
-          {movies.map(({ title, id }) => (
-            <li key={id}>
-              <div className={css.card}>
+          {movies.map((movie) => (
+            <li key={movie.id}>
+              <div className={css.card} onClick={() => onSelect(movie)}>
                 <img
                   className={css.image}
-                  src="https://image.tmdb.org/t/p/w500/poster-path"
+                  src={IMAGE_BASE_URL + `w500${movie.poster_path}`}
                   alt="title"
                   loading="lazy"
                 />
-                <h2 className={css.title}>{title}</h2>
+                <h2 className={css.title}>{movie.title}</h2>
               </div>
             </li>
           ))}

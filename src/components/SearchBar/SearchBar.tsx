@@ -11,7 +11,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
     const query = formData.get("query") as string;
 
     if (query === "") {
-      toast.error("Please enter your search query.", { position: "top-right" });
+      toast.error("Please enter your search query.");
       return;
     }
     onSubmit(query);
@@ -37,7 +37,6 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
             autoComplete="off"
             placeholder="Search movies..."
             autoFocus
-            defaultValue="batman"
           />
           <button className={styles.button} type="submit">
             Search
